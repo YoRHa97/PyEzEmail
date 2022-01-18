@@ -15,7 +15,7 @@ class SmtpConfig:
         ATRIBUTOS (**kwargs)
         ----
         username: str
-            Direccion de correo de envio
+            Direccion del correo de envio
         password : str
             Password del correo de envio
         host : str
