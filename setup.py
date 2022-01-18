@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1'
+VERSION = '0.0.3'
 PACKAGE_NAME = 'PyEzEmail'
 AUTHOR = 'Pedro Lamarca'
 AUTHOR_EMAIL = 'pedro.lamarca.1997@gmail.com'

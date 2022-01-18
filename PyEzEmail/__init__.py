@@ -14,7 +14,7 @@ class SmtpConfig:
 
         ATRIBUTOS (**kwargs)
         ----
-        mailing_address: str
+        username: str
             Direccion de correo de envio
         password : str
             Password del correo de envio
@@ -32,7 +32,7 @@ class SmtpConfig:
     """
 
     def __init__(self, **kwargs):
-        self.mailing_address = kwargs['mailing_address']
+        self.username = kwargs['username']
         self.password = kwargs['password']
         self.host = kwargs['host']
         self.port = kwargs['port'] if 'port' in kwargs else 25
@@ -40,7 +40,7 @@ class SmtpConfig:
     def check(self):
         smtp_object = SMTP(self.host, port=self.port)
         smtp_object.ehlo()
-        smtp_object.login(self.mailing_address, self.password)
+        smtp_object.login(self.username, self.password)
 
 
 class MailData:
@@ -94,8 +94,8 @@ class Email:
 
         ATRIBUTOS
         ----
-        mailing_address: str
-            Direccion de correo de envio
+        username: str
+            Direccion del correo de envio
         password : str
             Password del correo de envio
         host : str
@@ -126,7 +126,7 @@ class Email:
     """
 
     def __init__(self, smtpcfg: SmtpConfig, data: MailData):
-        self.mailing_address = smtpcfg.mailing_address
+        self.mailing_address = smtpcfg.username
         self.password = smtpcfg.password
         self.host = smtpcfg.host
         self.port = smtpcfg.port
