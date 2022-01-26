@@ -8,7 +8,7 @@ from smtplib import SMTP
 
 class SmtpConfig:
     """
-        Esta clase arma un objeto con la configuracion SMTP necesaria para el envio de correos en la clase Email
+        Esta clase crea un objeto con la configuracion SMTP necesaria para el envio de correos en la clase Email
 
         |
 
@@ -27,8 +27,8 @@ class SmtpConfig:
 
         METODOS
         ----
-        check() : None
-            Chequeo de la configuracion
+        checkcfg() : None
+            Chequeo de la configuracion (Este metodo se se ejecuta por defecto al crear el objeto)
     """
 
     def __init__(self, **kwargs):
@@ -36,24 +36,26 @@ class SmtpConfig:
         self.password = kwargs['password']
         self.host = kwargs['host']
         self.port = kwargs['port'] if 'port' in kwargs else 25
+        self.checkcfg()
 
-    def check(self):
+    def checkcfg(self):
         smtp_object = SMTP(self.host, port=self.port)
         smtp_object.ehlo()
         smtp_object.login(self.username, self.password)
+        return True
 
 
 class MailData:
 
     """
-        Esta clase arma un objeto con todos los datos de envio utlizados por la clase Email
+        Esta clase crea un objeto con todos los datos de envio utlizados por la clase Email
 
         |
 
         ATRIBUTOS (**kwargs)
         ----
         to : list
-                Correo del destinatario
+            Correo del destinatario
         cc : list
             Correo en copia
         bcc : list
@@ -103,7 +105,7 @@ class Email:
         port : int
             Puerto del host a conectar
         to : str
-                Correo del destinatario
+            Correo del destinatario
         cc : str
             Correo en copia
         bcc : str
